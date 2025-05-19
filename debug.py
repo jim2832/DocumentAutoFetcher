@@ -40,8 +40,8 @@ wait = WebDriverWait(driver, 10)
 # 登入 EIP
 driver.get("https://eip.taichung.gov.tw/myPortal.do")
 wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/h6/a'))).click()
-wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[1]/div[2]/form/ul[1]/li[1]/input'))).send_keys("ahya0201")
-driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/div[2]/form/ul[1]/li[2]/input').send_keys("gkzBBca0440@")
+wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[1]/div[2]/form/ul[1]/li[1]/input'))).send_keys("")
+driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/div[2]/form/ul[1]/li[2]/input').send_keys("")
 input("🔐 請手動輸入驗證碼後按 Enter 繼續...")
 
 # 點選公文整合資訊系統

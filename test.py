@@ -21,7 +21,6 @@ from openpyxl import load_workbook
 START_DATE = "112/04/01"
 END_DATE = "112/04/30"
 
-
 # 台灣國定假日設定
 tw_holidays = holidays.TW()
 
@@ -58,8 +57,8 @@ button.click()
 username_input = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[1]/div[2]/form/ul[1]/li[1]/input')))
 password_input = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[1]/div[2]/form/ul[1]/li[2]/input')))
 
-username_input.send_keys("ahya0201") # 帳號
-password_input.send_keys("gkzBBca0440@") # 密碼
+username_input.send_keys("") # 帳號
+password_input.send_keys("") # 密碼
 
 # TODO：這裡需手動輸入帳號、密碼與驗證碼，再點擊登入
 
