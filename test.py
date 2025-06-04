@@ -18,7 +18,7 @@ import os
 from openpyxl import load_workbook
 
 # params
-START_DATE = "112/04/01"
+START_DATE = "112/04/20"
 END_DATE = "112/04/30"
 
 
@@ -61,7 +61,7 @@ password_input = wait.until(EC.presence_of_element_located((By.XPATH, '/html/bod
 username_input.send_keys("ahya0201") # 帳號
 password_input.send_keys("gkzBBca0440@") # 密碼
 
-# TODO：這裡需手動輸入帳號、密碼與驗證碼，再點擊登入
+# TODO：這裡需手動輸入驗證碼，再點擊登入
 
 input("🔐 登入完成後請按下 Enter 繼續...")
 
@@ -182,7 +182,12 @@ while True:
     print(f"\n🔍 處理第 {page_number + 1} 頁")
     driver.switch_to.default_content()
     driver.switch_to.frame("main")
+    #找到電子檔圖示
     file_icons = driver.find_elements(By.XPATH, '//a[img[contains(@src, "../IMAGE/GDOCSIGN_1.gif")]]')
+
+    if not file_icons:
+        print("⚠️ 找不到電子檔，直接結束並儲存資料")
+        break
 
     for i, a_tag in enumerate(file_icons):
         original_window = driver.current_window_handle
@@ -252,7 +257,16 @@ while True:
 
         finally:
             driver.close()  # 關閉新視窗
+            all_windows = driver.window_handles
 
+            # 如果 original_window 還存在於目前的視窗中才切換
+            if original_window in all_windows:
+                driver.switch_to.window(original_window)
+            else:
+                print("⚠️ 原本的視窗已關閉，無法切換回原視窗")
+                # 根據邏輯你可以選擇停下來或切換到其他還在的視窗
+                if all_windows:
+                    driver.switch_to.window(all_windows[0])
             driver.switch_to.window(original_window)
             driver.switch_to.default_content()
 

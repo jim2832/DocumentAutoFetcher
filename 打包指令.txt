@@ -1,0 +1,1 @@
+pyinstaller --onefile  --hidden-import=selenium --hidden-import=holidays.countries --hidden-import=pandas --hidden-import=openpyxl --hidden-import=calendar --hidden-import=tkinter debug.py
